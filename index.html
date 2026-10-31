@@ -24,9 +24,20 @@
         <div class="condition-metric"><div class="heading">Wind gusts</div><div class="reading" id="c-gusts">—</div></div>
         <div class="condition-metric"><div class="heading">Tides</div><div class="reading" id="c-tide">Not available</div></div>
       </div>
-      <div class="condition-disclaimer">Modelled offshore conditions, not measured breaking surf. Surf verdict is a general estimate, not a safety assessment. Tide predictions require a local tidal source.</div>
+      <div class="condition-disclaimer">Modelled offshore conditions, not measured breaking surf. Surf verdict is a general estimate, not a safety assessment. Tide estimates come from an offshore numerical model, not a local tide-table station.</div>
     </div>
   </div>
+</section>
+<section class="tides" aria-labelledby="tide-heading">
+<div class="tides-head"><div><div class="live">● Ocean level forecast</div><h2 id="tide-heading">Tides &amp; sea level</h2></div><span class="quiet">Offshore model · relative to mean sea level</span></div>
+<div class="tide-stats" aria-live="polite">
+  <div class="tide-stat"><div class="tag">Current modelled level</div><div class="tide-value" id="tide-level">—</div><div class="tide-secondary" id="tide-state">Loading tide forecast…</div></div>
+  <div class="tide-stat"><div class="tag">Next estimated high</div><div class="tide-value tide-date" id="tide-high">—</div><div class="tide-secondary" id="tide-high-height"></div></div>
+  <div class="tide-stat"><div class="tag">Next estimated low</div><div class="tide-value tide-date" id="tide-low">—</div><div class="tide-secondary" id="tide-low-height"></div></div>
+</div>
+<svg class="tide-graph" id="tide-graph" viewBox="0 0 700 220" preserveAspectRatio="none" role="img" aria-label="Hourly modelled ocean level chart"></svg>
+<p class="tide-secondary" id="tide-note">Waiting for forecast…</p>
+<p class="tide-warning">Experimental offshore model estimates: sea level includes tides and other ocean/weather effects. These are <strong>not</strong> official local tide-table predictions. High/low times are approximate from hourly samples. Heights are relative to global mean sea level, not chart datum. Coastal errors can be substantial—never use for navigation, tidal access or water safety; check a local tide station.</p>
 </section>
 <div class="grid"><div class="metric"><div class="tag">Primary swell</div><div class="value" id="swell">—</div><div class="meta" id="swell-meta">Height & period</div></div><div class="metric"><div class="tag">Wave period</div><div class="value" id="period">—</div><div class="meta">Mean wave interval</div></div><div class="metric"><div class="tag">Wind speed</div><div class="value" id="wind">—</div><div class="meta" id="wind-meta">10 m wind</div></div><div class="metric"><div class="tag">Water temp</div><div class="value" id="temp">—</div><div class="meta">Modelled sea surface temp</div></div></div>
 <div class="panels"><section class="panel"><div class="panel-top"><div><div class="panel-title">Hourly wave forecast</div><div class="legend" style="margin-top:9px">Significant wave height</div></div><div class="switch"><button id="next24" class="chosen">24h</button><button id="next72">72h</button></div></div><svg class="chart" id="chart" viewBox="0 0 680 260" preserveAspectRatio="none" role="img" aria-label="Hourly wave heights forecast line graph"></svg><div class="time">Times shown in the selected location's timezone.</div></section><section class="panel"><div class="panel-title">7-day outlook</div><div class="muted" style="font-size:12px;margin-top:8px">Daily maximum modelled wave height</div><div id="daily" style="margin-top:14px"></div></section></div>
@@ -43,6 +54,7 @@
 <script src="js/config.js" defer></script>
 <script src="js/conditions.js" defer></script>
 <script src="js/charts.js" defer></script>
+<script src="js/tides.js" defer></script>
 <script src="js/forecast.js" defer></script>
 <script src="js/locations.js" defer></script>
 <script src="js/main.js" defer></script>
