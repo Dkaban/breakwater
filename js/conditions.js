@@ -12,7 +12,6 @@ function renderConditions(i,wi){
  $('c-wind').textContent=wind==null?'—':Math.round(wind)+' km/h';
  $('c-wind-dir').textContent=compass(windDir);
  $('c-gusts').textContent=gusts==null?'—':Math.round(gusts)+' km/h';
- $('c-tide').textContent='Not available';
  const hasData=wave!=null&&period!=null&&wind!=null;
  let verdict='Forecast available',desc='These are offshore model estimates. Local bathymetry and tide conditions may change the actual surf.';
  if(!hasData){verdict='Limited data';desc='Not enough wave, swell and wind forecast data to estimate surf quality at this location.'}
