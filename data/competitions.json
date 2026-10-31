@@ -1,0 +1,76 @@
+[
+  {
+    "title": "HTA Sunset Pro",
+    "category": "qual",
+    "tier": "WSL Qualifying Series",
+    "place": "Sunset Beach · Oʻahu, Hawaii",
+    "start": "2026-10-26",
+    "end": "2026-11-02",
+    "url": "https://www.hawaiinewsnow.com/2026/10/27/hta-sunset-pro-opens-north-shore-winter-surf-season/"
+  },
+  {
+    "title": "Philippines Pro",
+    "category": "ct",
+    "tier": "Championship Tour",
+    "place": "Cloud 9 · Siargao, Philippines",
+    "start": "2026-10-31",
+    "end": "2026-11-10",
+    "url": "https://shop-eat-surf-outdoor.com/press-releases/world-surf-league-announces-cloud-9-philippines-as-new-stop-on-2026-championship-tour/620885/"
+  },
+  {
+    "title": "TUDOR Nazaré Big Wave Challenge",
+    "category": "big",
+    "tier": "Big-wave challenge",
+    "place": "Praia do Norte · Nazaré, Portugal",
+    "start": "2026-11-01",
+    "end": "2027-03-31",
+    "conditional": true,
+    "url": "https://nazarewaves.com/en/news/283"
+  },
+  {
+    "title": "HTA Haleʻiwa Pro",
+    "category": "qual",
+    "tier": "WSL Qualifying Series",
+    "place": "Haleʻiwa · Oʻahu, Hawaii",
+    "start": "2026-11-05",
+    "end": "2026-11-14",
+    "url": "https://www.hawaiinewsnow.com/2026/10/27/hta-sunset-pro-opens-north-shore-winter-surf-season/"
+  },
+  {
+    "title": "The Eddie Aikau Invitational",
+    "category": "big",
+    "tier": "Big-wave invitational",
+    "place": "Waimea Bay · Oʻahu, Hawaii",
+    "start": "2026-12-06",
+    "end": "2027-03-04",
+    "conditional": true,
+    "url": "https://www.theeddieaikau.com/"
+  },
+  {
+    "title": "Lexus Pipe Masters",
+    "category": "ct",
+    "tier": "Championship Tour",
+    "place": "Banzai Pipeline · Oʻahu, Hawaii",
+    "start": "2026-12-08",
+    "end": "2026-12-20",
+    "url": "https://hawaii.com/events/lexus-pipe-masters-2026"
+  },
+  {
+    "title": "Billabong Pipe Pro",
+    "category": "qual",
+    "tier": "WSL Qualifying Series 6,000",
+    "place": "Banzai Pipeline · Oʻahu, Hawaii",
+    "start": "2027-01-29",
+    "end": "2027-02-07",
+    "url": "https://www.boardriding.com/events/billabong-pipe-pro-2027"
+  },
+  {
+    "title": "Bioglan Newcastle Surfest",
+    "category": "qual",
+    "tier": "WSL Challenger Series",
+    "place": "Merewether Beach · Newcastle, Australia",
+    "start": "2027-03-01",
+    "end": "2027-03-07",
+    "url": "https://www.nsw.gov.au/visiting-and-exploring-nsw/nsw-events/bioglan-newcastle-surfest-presented-by-bonsoy"
+  }
+]
