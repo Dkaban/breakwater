@@ -2,7 +2,7 @@
 
 **A global surf forecast dashboard.** Explore predicted ocean conditions in Tofino, Nazaré, and surf locations around the world.
 
-Breakwater is a lightweight, responsive website that uses [Open-Meteo](https://open-meteo.com/) forecast APIs. The initial version is a single HTML file with embedded CSS and JavaScript — no framework, installation, build tools, or API key required for the prototype.
+Breakwater is a lightweight, responsive website that uses [Open-Meteo](https://open-meteo.com/) forecast APIs. The app uses separate HTML, CSS, and JavaScript files plus a JSON surf competition schedule. No framework, build tools, or API key are required.
 
 ## Features
 
@@ -18,11 +18,7 @@ Breakwater is a lightweight, responsive website that uses [Open-Meteo](https://o
 
 ## Quick start
 
-### Option 1: Open the file
-
-Download or clone this repository and open `index.html` in a modern browser with an internet connection.
-
-### Option 2: Run a local server
+### Run a local server
 
 From the project folder, run:
 
@@ -83,13 +79,30 @@ Always check local observations and safety advisories before entering the ocean.
 - [ ] Add tide information where supported
 - [ ] Add spot-specific surf quality indicators
 - [ ] Add favourite-spot comparisons and threshold alerts
-- [ ] Separate HTML, CSS, and JavaScript as the project grows
+- [x] Separate HTML, CSS, JavaScript, and surf competition data
 - [ ] Add automated tests and continuous deployment
 
 ## License
 
-No open-source license has been selected yet. Add a `LICENSE` file if you want to define reuse and contribution permissions.
+This repository includes an MIT `LICENSE` file.
 
 ## Surf conditions snapshot
 
 The dashboard includes a surf conditions overview with a modelled wave-height gauge, swell height and period, swell direction, wind and gusts, and a simple heuristic description. These are **not** actual breaking wave heights or safety ratings. Tide times are intentionally unavailable pending integration with a reliable local tide source.
+
+## Project structure
+
+```text
+index.html             # Page markup
+styles.css             # Responsive site styles
+js/config.js           # Shared state and helpers
+js/locations.js        # Spots, favorites, place search
+js/forecast.js         # Open-Meteo API and dashboard
+js/conditions.js       # Surf conditions snapshot
+js/charts.js           # Hourly and weekly forecasts
+js/competitions.js     # Surf events display and filtering
+js/main.js             # App initialization
+data/competitions.json # Curated competition schedule
+```
+
+Scripts load in dependency order with `defer`. Serve the site over HTTP (for example using `python -m http.server 8000`); opening `index.html` with `file://` can block the competition JSON request. GitHub Pages requires no build step. Event dates are manually curated and are not updated automatically.
