@@ -1,0 +1,5 @@
+// Default spots, shared state, units and utility helpers.
+const defaults=[{name:'Tofino',region:'British Columbia, Canada',lat:49.10,lon:-125.93},{name:'Nazaré',region:'Portugal',lat:39.61,lon:-9.09},{name:'Pipeline',region:'Oahu, Hawaii',lat:21.665,lon:-158.055},{name:'Bells Beach',region:'Victoria, Australia',lat:-38.369,lon:144.283}];
+let custom=[],spot=defaults[0],imperial=false,hours=24,marine=null,weather=null;const $=id=>document.getElementById(id);try{custom=JSON.parse(localStorage.getItem('breakwaterSpots')||'[]');imperial=localStorage.getItem('breakwaterUnits')==='imperial'}catch(e){};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const key=s=>s.lat.toFixed(4)+','+s.lon.toFixed(4);
+function save(){localStorage.setItem('breakwaterSpots',JSON.stringify(custom))}function measure(x){return x==null||!Number.isFinite(x)?'—':(x*(imperial?3.28084:1)).toFixed(1)+(imperial?' ft':' m')}function degree(x){if(x==null)return'—';return ['N','NE','E','SE','S','SW','W','NW'][Math.round(x/45)%8]+' ('+Math.round(x)+'°)'}
