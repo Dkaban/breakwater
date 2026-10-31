@@ -89,3 +89,7 @@ Always check local observations and safety advisories before entering the ocean.
 ## License
 
 No open-source license has been selected yet. Add a `LICENSE` file if you want to define reuse and contribution permissions.
+
+## Surf conditions snapshot
+
+The dashboard includes a surf conditions overview with a modelled wave-height gauge, swell height and period, swell direction, wind and gusts, and a simple heuristic description. These are **not** actual breaking wave heights or safety ratings. Tide times are intentionally unavailable pending integration with a reliable local tide source.
