@@ -11,6 +11,7 @@ Breakwater is a lightweight, responsive website that uses [Open-Meteo](https://o
 - **Custom coordinates** for specific offshore surf spots
 - **Wave and swell data** including significant wave height, swell height, direction, and period
 - **Wind and water temperature** alongside marine conditions
+- **Modelled tide/sea-level information** with approximate highs, lows, 24-hour chart and rise/fall trend
 - **24-hour and 72-hour** interactive wave forecast views
 - **7-day outlook** showing daily maximum forecast wave height
 - **Saved spots and unit preferences** stored locally in your browser
@@ -34,16 +35,19 @@ No `npm install` or environment variables are needed.
 
 ```text
 breakwater-surf-dashboard/
-├── index.html     # Website HTML, styling, and JavaScript
-├── README.md      # Project documentation
-└── .gitignore     # Files Git should ignore (optional)
+├── index.html          # HTML structure
+├── styles.css          # Styling
+├── js/                 # Forecast, tide, chart and UI logic
+├── data/               # Curated competition schedule
+├── README.md           # Project documentation
+└── LICENSE             # MIT license
 ```
 
-**Only `index.html` is required to serve the site.** The README is recommended for your GitHub repository; `.gitignore` is optional for the current version.
+Keep the CSS, JavaScript and data directories alongside `index.html`. Serve the project over HTTP, as the competition calendar fetches JSON.
 
 ## Publish with GitHub Pages
 
-1. Upload `index.html` and `README.md` to the **root** of your GitHub repository (you can also upload `.gitignore`).
+1. Upload all project files and directories, including `index.html`, `styles.css`, `js/`, and `data/`, to the **root** of your GitHub repository.
 2. Commit the files to the `main` branch.
 3. Open the repository's **Settings → Pages**.
 4. Under **Build and deployment**, choose **Deploy from a branch**.
@@ -68,7 +72,7 @@ API availability, licensing, usage limits, and commercial-use conditions are gov
 
 **This is an early prototype, not a surf-safety or navigation service.** Forecast wave height is a model estimate and **not** the measured height of breaking waves at the beach. Local reefs, bathymetry, tides, shoreline shape, and wind can substantially change actual surf. This is especially important at Nazaré, where the underwater canyon affects breaking waves.
 
-Location search identifies towns and other places, **not** a verified database of surf breaks; enter offshore coordinates for a specific surf spot when needed. Tide predictions, surf quality ratings, spot-specific wind suitability, and safety alerts are not yet included.
+Location search identifies towns and other places, **not** a verified database of surf breaks; enter offshore coordinates for a specific surf spot when needed. Official station tide predictions, surf quality ratings, spot-specific wind suitability, and safety alerts are not yet included.
 
 Always check local observations and safety advisories before entering the ocean.
 
@@ -76,7 +80,7 @@ Always check local observations and safety advisories before entering the ocean.
 
 - [ ] Add a map-based surf break picker
 - [ ] Build a verified catalog of surf spots
-- [ ] Add tide information where supported
+- [x] Add modelled tide and sea-level information (not official station predictions)
 - [ ] Add spot-specific surf quality indicators
 - [ ] Add favourite-spot comparisons and threshold alerts
 - [x] Separate HTML, CSS, JavaScript, and surf competition data
@@ -88,7 +92,7 @@ This repository includes an MIT `LICENSE` file.
 
 ## Surf conditions snapshot
 
-The dashboard includes a surf conditions overview with a modelled wave-height gauge, swell height and period, swell direction, wind and gusts, and a simple heuristic description. These are **not** actual breaking wave heights or safety ratings. Tide times are intentionally unavailable pending integration with a reliable local tide source.
+The dashboard includes a surf conditions overview with a modelled wave-height gauge, swell height and period, swell direction, wind and gusts, and a simple heuristic description. These are **not** actual breaking wave heights or safety ratings. Modelled sea-level heights include tides, but use global mean sea level, not chart datum; the estimated high/low times are derived from hourly model values and are not official station tide predictions.
 
 ## Project structure
 
@@ -98,6 +102,7 @@ styles.css             # Responsive site styles
 js/config.js           # Shared state and helpers
 js/locations.js        # Spots, favorites, place search
 js/forecast.js         # Open-Meteo API and dashboard
+js/tides.js            # Modelled tide trend, extrema, chart
 js/conditions.js       # Surf conditions snapshot
 js/charts.js           # Hourly and weekly forecasts
 js/competitions.js     # Surf events display and filtering
