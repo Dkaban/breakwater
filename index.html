@@ -20,6 +20,35 @@
 .condition-disclaimer{margin-top:18px;font-size:11px;color:#84a4ad;line-height:1.5}
 @media(max-width:850px){.conditions-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:550px){.conditions{padding:20px}.conditions-body{grid-template-columns:1fr;gap:5px}.wave-gauge{height:185px}.wave-gauge svg{height:170px}.conditions-head h2{font-size:18px}.conditions-metrics{gap:20px 10px}}
+
+/* Upcoming surf competition calendar */
+.competitions{margin-top:22px;background:linear-gradient(155deg,#12323f,#102731);border:1px solid #315563;border-radius:22px;padding:27px 29px}
+.competitions-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.competitions h2{font-size:25px;letter-spacing:-.7px;margin:5px 0 7px}
+.competitions .comp-intro{color:#9fbcc3;line-height:1.6;font-size:13px;max-width:680px;margin:0}
+.comp-updated{font-size:11px;color:#8babb4;letter-spacing:.3px;white-space:nowrap;padding-top:8px}
+.comp-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.comp-filters button{background:#102933;color:#b8d0d5;border:1px solid #34515b;border-radius:100px;padding:9px 14px;font-size:12px}
+.comp-filters button:hover{border-color:#74e4d0}
+.comp-filters button.selected{background:#76e9d4;border-color:#76e9d4;color:#102730;font-weight:760}
+.comp-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.comp-card{position:relative;display:flex;flex-direction:column;gap:12px;border:1px solid #31515b;border-radius:16px;padding:20px;background:#0d2732;min-width:0}
+.comp-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap}
+.comp-type{color:#8cebd6;letter-spacing:1px;font-size:10px;font-weight:760;text-transform:uppercase}
+.comp-badge{border-radius:6px;border:1px solid #38606a;color:#b7d3da;background:#183943;font-size:10px;font-weight:700;padding:5px 8px}
+.comp-badge.open{border-color:#4e947f;background:#174a44;color:#a5f3dc}
+.comp-title{font-size:18px;font-weight:750;letter-spacing:-.3px;margin:0;line-height:1.3}
+.comp-place{font-size:12px;color:#a2c0c6;line-height:1.5}
+.comp-dates{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.comp-date{font-size:14px;font-weight:670;color:#e7f5f4}
+.comp-countdown{font-size:11px;color:#87bdb8}
+.comp-note{font-size:11px;line-height:1.5;color:#9ebbc1}
+.comp-link{margin-top:auto;color:#84ecd6;text-decoration:none;font-size:12px;font-weight:700;align-self:start}
+.comp-link:hover{text-decoration:underline}
+.comp-privacy{font-size:11px;color:#85a4ac;line-height:1.65;margin:17px 0 0}
+.comp-empty{color:#aac1c6;padding:24px 0}
+@media(max-width:650px){.competitions{padding:20px 17px}.comp-list{grid-template-columns:1fr}.comp-card{padding:17px}.competitions h2{font-size:22px}}
+
 </style></head><body><main class="app">
 <header class="top"><div class="logo"><span class="logo-mark">≋</span>BREAK<b>WATER</b></div><span class="status"><span class="dot"></span> Global marine forecast</span></header>
 <div class="tag">THE OCEAN, DECODED</div><h1>Know before<br>you paddle out.</h1><p class="sub">Wave forecasts, swell, wind and ocean conditions from your favourite coastlines — all in one place.</p>
@@ -50,6 +79,14 @@
 </section>
 <div class="grid"><div class="metric"><div class="tag">Primary swell</div><div class="value" id="swell">—</div><div class="meta" id="swell-meta">Height & period</div></div><div class="metric"><div class="tag">Wave period</div><div class="value" id="period">—</div><div class="meta">Mean wave interval</div></div><div class="metric"><div class="tag">Wind speed</div><div class="value" id="wind">—</div><div class="meta" id="wind-meta">10 m wind</div></div><div class="metric"><div class="tag">Water temp</div><div class="value" id="temp">—</div><div class="meta">Modelled sea surface temp</div></div></div>
 <div class="panels"><section class="panel"><div class="panel-top"><div><div class="panel-title">Hourly wave forecast</div><div class="legend" style="margin-top:9px">Significant wave height</div></div><div class="switch"><button id="next24" class="chosen">24h</button><button id="next72">72h</button></div></div><svg class="chart" id="chart" viewBox="0 0 680 260" preserveAspectRatio="none" role="img" aria-label="Hourly wave heights forecast line graph"></svg><div class="time">Times shown in the selected location's timezone.</div></section><section class="panel"><div class="panel-title">7-day outlook</div><div class="muted" style="font-size:12px;margin-top:8px">Daily maximum modelled wave height</div><div id="daily" style="margin-top:14px"></div></section></div>
+
+<section class="competitions" id="competitions" aria-labelledby="competitions-title">
+ <div class="competitions-header"><div><div class="live">● Surf calendar · 2026–27</div><h2 id="competitions-title">Upcoming surf competitions</h2><p class="comp-intro">Major tour stops and big-wave contests around the world. Explore published event windows and track what’s coming up.</p></div><span class="comp-updated">Dates checked Oct 31, 2026</span></div>
+ <div class="comp-filters" id="comp-filters" role="group" aria-label="Filter competitions"><button type="button" data-category="all" class="selected" aria-pressed="true">All events</button><button type="button" data-category="big" aria-pressed="false">Big wave</button><button type="button" data-category="ct" aria-pressed="false">Championship Tour</button><button type="button" data-category="qual" aria-pressed="false">Qualifying &amp; Challenger</button></div>
+ <div class="comp-list" id="comp-list" aria-live="polite"></div>
+ <p class="comp-privacy">Competition dates are published windows, not guaranteed days of surfing. Big-wave contests need a specific swell and an official call; “window open” does not mean the event is live. Dates are maintained manually — check each event’s link for changes.</p>
+</section>
+
 <p class="info">Data: <a href="https://open-meteo.com/en/docs/marine-weather-api" target="_blank" rel="noopener" style="color:#8debd5">Open-Meteo Marine</a> and <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener" style="color:#8debd5">Weather API</a>. Forecasts are model predictions, not measured breaking surf height, and are not for navigation or water safety decisions. Nearshore bathymetry, reefs, tides and coastal wind effects can make actual surf differ greatly; particularly at Nazaré. Search matches town locations rather than verified surf breaks. Check a local forecast and safety information before entering the water.</p><div class="footer">BREAKWATER · Prototype v1 · Worldwide marine forecasts</div></main>
 <script>
 const defaults=[{name:'Tofino',region:'British Columbia, Canada',lat:49.10,lon:-125.93},{name:'Nazaré',region:'Portugal',lat:39.61,lon:-9.09},{name:'Pipeline',region:'Oahu, Hawaii',lat:21.665,lon:-158.055},{name:'Bells Beach',region:'Victoria, Australia',lat:-38.369,lon:144.283}];
@@ -99,4 +136,39 @@ function drawDaily(){const d=marine.daily,vals=d.wave_height_max||[],mx=Math.max
 $('favorite').onclick=()=>{const i=custom.findIndex(s=>key(s)===key(spot));if(i>=0)custom.splice(i,1);else custom.push(spot);save();buttons()};$('units').onclick=()=>{imperial=!imperial;localStorage.setItem('breakwaterUnits',imperial?'imperial':'metric');buttons();render()};$('next24').onclick=()=>{hours=24;$('next24').classList.add('chosen');$('next72').classList.remove('chosen');if(marine)drawChart(closestIndex(marine.hourly.time,marine.timezone))};$('next72').onclick=()=>{hours=72;$('next72').classList.add('chosen');$('next24').classList.remove('chosen');if(marine)drawChart(closestIndex(marine.hourly.time,marine.timezone))};
 $('coords').onclick=()=>{const lat=Number($('lat').value),lon=Number($('lon').value),name=$('label').value.trim();if(!name||!$('lat').value||!$('lon').value||!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180){alert('Enter a name and valid latitude / longitude.');return}select({name,region:'Custom coordinates',lat,lon})};
 let timer=0,controller;const input=$('search'),results=$('results');input.addEventListener('input',()=>{clearTimeout(timer);if(controller)controller.abort();const q=input.value.trim();if(q.length<3){results.style.display='none';return}timer=setTimeout(async()=>{try{controller=new AbortController();const url='https://geocoding-api.open-meteo.com/v1/search?'+new URLSearchParams({name:q,count:8,language:'en'});const r=await fetch(url,{signal:controller.signal}),data=await r.json();if(input.value.trim()!==q)return;const items=data.results||[];results.innerHTML=items.length?'':'<div style="padding:14px;color:#a2b9c0">No places found. Try coordinates below.</div>';items.forEach(s=>{const b=document.createElement('button');b.textContent=`${s.name}, ${s.admin1?s.admin1+', ':''}${s.country||''}`;b.onclick=()=>{input.value='';results.style.display='none';select({name:s.name,region:[s.admin1,s.country].filter(Boolean).join(', '),lat:s.latitude,lon:s.longitude})};results.appendChild(b)});results.style.display='block'}catch(e){if(e.name!=='AbortError')results.style.display='none'}},280)});document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))results.style.display='none'});buttons();select(spot);
+</script>
+<script>
+const competitionEvents=[{"title":"HTA Sunset Pro","category":"qual","tier":"WSL Qualifying Series","place":"Sunset Beach · Oʻahu, Hawaii","start":"2026-10-26","end":"2026-11-02","url":"https://www.hawaiinewsnow.com/2026/10/27/hta-sunset-pro-opens-north-shore-winter-surf-season/"},{"title":"Philippines Pro","category":"ct","tier":"Championship Tour","place":"Cloud 9 · Siargao, Philippines","start":"2026-10-31","end":"2026-11-10","url":"https://shop-eat-surf-outdoor.com/press-releases/world-surf-league-announces-cloud-9-philippines-as-new-stop-on-2026-championship-tour/620885/"},{"title":"TUDOR Nazaré Big Wave Challenge","category":"big","tier":"Big-wave challenge","place":"Praia do Norte · Nazaré, Portugal","start":"2026-11-01","end":"2027-03-31","conditional":true,"url":"https://nazarewaves.com/en/news/283"},{"title":"HTA Haleʻiwa Pro","category":"qual","tier":"WSL Qualifying Series","place":"Haleʻiwa · Oʻahu, Hawaii","start":"2026-11-05","end":"2026-11-14","url":"https://www.hawaiinewsnow.com/2026/10/27/hta-sunset-pro-opens-north-shore-winter-surf-season/"},{"title":"The Eddie Aikau Invitational","category":"big","tier":"Big-wave invitational","place":"Waimea Bay · Oʻahu, Hawaii","start":"2026-12-06","end":"2027-03-04","conditional":true,"url":"https://www.theeddieaikau.com/"},{"title":"Lexus Pipe Masters","category":"ct","tier":"Championship Tour","place":"Banzai Pipeline · Oʻahu, Hawaii","start":"2026-12-08","end":"2026-12-20","url":"https://hawaii.com/events/lexus-pipe-masters-2026"},{"title":"Billabong Pipe Pro","category":"qual","tier":"WSL Qualifying Series 6,000","place":"Banzai Pipeline · Oʻahu, Hawaii","start":"2027-01-29","end":"2027-02-07","url":"https://www.boardriding.com/events/billabong-pipe-pro-2027"},{"title":"Bioglan Newcastle Surfest","category":"qual","tier":"WSL Challenger Series","place":"Merewether Beach · Newcastle, Australia","start":"2027-03-01","end":"2027-03-07","url":"https://www.nsw.gov.au/visiting-and-exploring-nsw/nsw-events/bioglan-newcastle-surfest-presented-by-bonsoy"}];
+(function initCalendar(){
+ const list=document.getElementById("comp-list"), filterWrap=document.getElementById("comp-filters");
+ const escapeHTML=value=>String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+ const full=date=>new Date(date+"T12:00:00Z").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric",timeZone:"UTC"});
+ const windowLabel=e=>{
+  const a=new Date(e.start+"T12:00:00Z"),b=new Date(e.end+"T12:00:00Z");
+  const start=a.toLocaleDateString("en-US",{month:"short",day:"numeric",timeZone:"UTC"});
+  return a.getUTCFullYear()===b.getUTCFullYear()? start+" – "+full(e.end) : full(e.start)+" – "+full(e.end);
+ };
+ const day=date=>Date.parse(date+"T00:00:00Z");
+ const today=new Date();
+ const todayUtc=Date.UTC(today.getFullYear(),today.getMonth(),today.getDate());
+ const active=competitionEvents.filter(e=>day(e.end)>=todayUtc).sort((a,b)=>day(a.start)-day(b.start));
+ let category="all";
+ function render(){
+  const filtered=active.filter(e=>category==="all"||e.category===category);
+  if(!filtered.length){list.innerHTML='<p class="comp-empty">No upcoming competitions listed for this category. Check back for future calendar updates.</p>';return}
+  list.innerHTML=filtered.map(e=>{
+   const isOpen=day(e.start)<=todayUtc, days=Math.round((day(e.start)-todayUtc)/86400000);
+   const badge=isOpen?"Window open":days===1?"Tomorrow":days===0?"Opens today":"Upcoming";
+   const countdown=isOpen?("Through "+full(e.end)):("Starts in "+days+" day"+(days===1?"":"s"));
+   const note=e.conditional?"The contest runs on one day only if conditions are approved. Actual date is not yet confirmed.":"Heat days depend on surf conditions during the listed window.";
+   return '<article class="comp-card"><div class="comp-card-top"><span class="comp-type">'+escapeHTML(e.tier)+'</span><span class="comp-badge'+(isOpen?' open':'')+'">'+badge+'</span></div><h3 class="comp-title">'+escapeHTML(e.title)+'</h3><div class="comp-place">⌁ '+escapeHTML(e.place)+'</div><div class="comp-dates"><span class="comp-date">'+windowLabel(e)+'</span><span class="comp-countdown">'+countdown+'</span></div><div class="comp-note">'+note+'</div><a class="comp-link" href="'+escapeHTML(e.url)+'" target="_blank" rel="noopener noreferrer">Event details ↗</a></article>'
+  }).join("");
+ }
+ filterWrap.querySelectorAll("button[data-category]").forEach(button=>button.addEventListener("click",()=>{
+  category=button.dataset.category;
+  filterWrap.querySelectorAll("button[data-category]").forEach(b=>{const yes=b===button;b.classList.toggle("selected",yes);b.setAttribute("aria-pressed",String(yes))});
+  render();
+ }));
+ render();
+})();
 </script></body></html>
